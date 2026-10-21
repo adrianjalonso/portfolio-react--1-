@@ -1,0 +1,47 @@
+:root{--soft:#6b6b6b;--ease:cubic-bezier(.22,.8,.24,1)}
+*{box-sizing:border-box;margin:0}
+html,body,#root{height:100%}
+body{background:#fff;color:#000;font-family:"Bricolage Grotesque",system-ui,sans-serif;overflow:hidden;display:grid;place-items:center}
+.bg{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+.bg path{fill:none;stroke:#000;stroke-width:5;stroke-linecap:round;opacity:.9}
+.bg .a{animation:drift 14s ease-in-out infinite alternate}
+.bg .b{animation:drift 18s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translate(18px,-14px) rotate(2deg)}}
+.float{animation:bob 7s ease-in-out infinite alternate;width:min(880px,92vw)}
+@keyframes bob{to{transform:translateY(-10px)}}
+.sheet{position:relative;background:#fff;border:5px solid #000;border-radius:46px 38px 54px 34px/40px 52px 36px 48px;box-shadow:0 30px 60px -30px rgba(0,0,0,.35);padding:clamp(20px,4vw,44px);height:min(560px,82vh);display:flex;flex-direction:column;gap:20px}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav button{font:inherit;font-weight:600;font-size:15px;background:none;border:3px solid transparent;border-radius:999px;padding:6px 16px;cursor:pointer;color:#000;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s}
+nav button:hover{border-color:#000}
+nav button[aria-selected=true]{background:#000;color:#fff}
+button:focus-visible,a:focus-visible{outline:3px dashed #000;outline-offset:3px}
+.panels{position:relative;flex:1;min-height:0}
+.panel{position:absolute;inset:0;overflow:auto;opacity:0;visibility:hidden;transform:translateY(14px) scale(.985);transition:opacity .45s var(--ease),transform .45s var(--ease),visibility 0s .45s;padding:4px}
+.panel.on{opacity:1;visibility:visible;transform:none;transition:opacity .45s var(--ease) .1s,transform .45s var(--ease) .1s}
+h1{font-size:clamp(40px,8vw,84px);font-weight:800;line-height:.95;letter-spacing:-.03em}
+h2{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+h3{font-size:19px;font-weight:600}
+p{line-height:1.55;max-width:60ch}
+.soft{color:var(--soft)}
+.hero{display:flex;flex-direction:column;justify-content:center;height:100%;gap:18px}
+.hero p{font-size:clamp(16px,2vw,20px)}
+.about{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;height:100%}
+.photo{width:200px;aspect-ratio:1;border:5px solid #000;border-radius:58% 42% 52% 48%/46% 56% 44% 54%;overflow:hidden;display:grid;place-items:center;font-size:14px;text-align:center;padding:14px;color:var(--soft)}
+.photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1);margin:-14px}
+.about p+p{margin-top:12px}
+.skills{display:grid;gap:18px}
+.group h3{margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:3px solid #000;border-radius:999px;padding:4px 14px 4px 10px;font-weight:600;font-size:15px}
+.chip i{width:12px;height:12px;border-radius:50%;background:var(--c);border:2px solid #000}
+.chip.lite{border-style:dashed;font-weight:400}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{border:4px solid #000;border-radius:30px 22px 34px 24px/24px 32px 22px 30px;padding:18px;display:flex;flex-direction:column;gap:8px;transition:transform .35s var(--ease),background .3s,color .3s}
+.card:hover{transform:rotate(-1.2deg) translateY(-4px);background:#000;color:#fff}
+.card:hover .soft{color:#bbb}
+.card a{color:inherit;font-weight:600;margin-top:auto}
+.links{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+.links a{width:fit-content;color:#000;font-size:clamp(22px,4vw,34px);font-weight:800;letter-spacing:-.02em;text-decoration:none;border-bottom:5px solid #000;border-radius:0 0 12px 3px;transition:padding .3s var(--ease)}
+.links a:hover{padding-left:14px}
+@media (max-width:640px){.about{grid-template-columns:1fr;justify-items:start;gap:14px}.photo{width:120px}.sheet{height:86vh;border-radius:34px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
